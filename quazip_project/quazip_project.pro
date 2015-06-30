@@ -14,6 +14,13 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 LIBS += -L$$PWD\Quazip\lib\ -lquazip
-INCLUDEPATH +=$$PWDQuazip\include\quazip
+INCLUDEPATH +=$$PWD\Quazip\include\quazip
+win32{
+    ZLIB_FILE_PATH = $$_PRO_FILE_PWD_/zlib1.dll
 
+    ZLIB_FILE_PATH ~= s,/,\\,g
+    DESTDIR  ~= s,/,\\,g
+
+    QMAKE_POST_LINK +=  $${QMAKE_COPY} $$quote($$ZLIB_FILE_PATH) $$quote($${DESTDIR}) $$escape_expand(\\n\\t)
+}
 SOURCES += main.cpp
