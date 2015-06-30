@@ -15,6 +15,7 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 LIBS += -L$$PWD\Quazip\lib\ -lquazip
 INCLUDEPATH +=$$PWD\Quazip\include\quazip
+DESTDIR = $$MAIN_BUILD_DIR/bin
 win32{
     ZLIB_FILE_PATH = $$_PRO_FILE_PWD_/zlib1.dll
 
